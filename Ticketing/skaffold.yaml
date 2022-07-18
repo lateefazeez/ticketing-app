@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild:
+    projectId: ticketing-dev-355906
   artifacts:
-    - image: codelate/auth
+    - image: us.gcr.io/ticketing-dev-355906/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -16,3 +18,4 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
+# thisisunsafe - to make the code run on browser
